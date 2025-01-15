@@ -1,0 +1,19 @@
+# Ignore node_modules
+node_modules/
+build/
+
+# Ignore environment variables
+.env
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore image, PDF, and large media files (adjust as needed)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.heic
+*.pdf
+*.mp4
+*.zip
