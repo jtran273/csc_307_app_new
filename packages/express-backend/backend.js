@@ -33,6 +33,17 @@ app.get("/users", (req, res) => {
   }
 });
 
+app.get("/users/:id", (req, res) => {
+  const id = req.params.id;
+  const user = findUserById(id);
+  if (user) {
+      res.send(user);
+  } else {
+      res.status(404).send("Resource not found.");
+  }
+});
+
+
 
 // Start the server and listen on the defined port
 app.listen(port, () => {
@@ -44,3 +55,17 @@ const findUserByName = (name) => {
 };
 
 
+const findUserById = (id) => {
+  return users["users_list"].find(user => user["id"] === id);
+};
+
+const addUser = (user) => {
+  users["users_list"].push(user);
+  return user;
+};
+
+app.post("/users", (req, res) => {
+  const userToAdd = req.body;
+  addUser(userToAdd);
+  res.status(201).send();
+});
