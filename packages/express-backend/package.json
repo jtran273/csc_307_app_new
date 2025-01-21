@@ -1,16 +1,17 @@
 {
   "name": "express-backend",
   "version": "1.0.0",
-  "type": "module",
-  "main": "index.js",
+  "main": "backend.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx nodemon backend.js", 
+    "start": "node backend.js"
   },
-  "keywords": [],
-  "author": "",
+  "author": "James Tran",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.0"
   }
 }
