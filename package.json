@@ -1,5 +1,5 @@
 {
-  "name": "csc-307-app",
+  "name": "express-backend",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -7,22 +7,28 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "author": "",
+  "author": "James Tran",
   "license": "ISC",
-  "description": ""
-  , 
+  "description": "backend.js",
   "workspaces": [
-      "packages/*"
+    "packages/*"
   ],
-
-    "dependencies": {
-      "react": "^18.0.0",
-      "react-dom": "^18.0.0"
-    },
-    "devDependencies": {
-      "vite": "^4.0.0"
-    }
-  
-  
+  "dependencies": {
+    "express": "^4.21.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "vite": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "backend.js"
+  },
+  "keywords": [
+    "backend",
+    "rest-api",
+    "express",
+    "node.js"
+  ]
 }
-

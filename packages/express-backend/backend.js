@@ -17,21 +17,25 @@ const users = {
     ]
 };
 
-// Root route (existing Hello World route)
 app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 
-// New /users route to return the hardcoded user data
 app.get("/users", (req, res) => {
-  const name = req.query.name;
+  const { name, job } = req.query; 
+  let filteredUsers = users["users_list"];
+
   if (name) {
-      const result = { users_list: findUserByName(name) };
-      res.send(result);
-  } else {
-      res.send(users);
+      filteredUsers = filteredUsers.filter(user => user.name === name); // Filter by name
   }
+  if (job) {
+      filteredUsers = filteredUsers.filter(user => user.job === job); // Filter by job
+  }
+
+  res.send({ users_list: filteredUsers }); 
 });
+
+
 
 app.get("/users/:id", (req, res) => {
   const id = req.params.id;
@@ -45,7 +49,6 @@ app.get("/users/:id", (req, res) => {
 
 
 
-// Start the server and listen on the defined port
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
 });
@@ -69,3 +72,23 @@ app.post("/users", (req, res) => {
   addUser(userToAdd);
   res.status(201).send();
 });
+
+const deleteUserById = (id) => {
+  const index = users["users_list"].findIndex(user => user["id"] === id);
+  if (index !== -1) {
+      users["users_list"].splice(index, 1); // Removes the user from the array
+      return true; // Deletion successful
+  }
+  return false; // User not found
+};
+
+app.delete("/users/:id", (req, res) => {
+    const id = req.params.id; 
+    const success = deleteUserById(id); // Attempts to delete the user
+    if (success) {
+        res.status(204).send(); // 204 No Content if successful
+    } else {
+        res.status(404).send("Resource not found."); // 404 Not Found if the user doesn't exist
+    }
+});
+
