@@ -1,1 +1,5 @@
-/node_modules
+# Node modules folder (automatically generated)
+node_modules/
+
+# Environment variables file (contains sensitive data)
+.env
