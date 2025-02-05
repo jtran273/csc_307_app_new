@@ -32,7 +32,7 @@ function MyApp() {
     })
       .then((res) => {
         if (res.status === 204) {
-          setCharacters((prev) => prev.filter((user) => user.id !== id));
+          setCharacters((prev) => prev.filter((user) => user._id !== id));
         } else {
           console.log("Error deleting user");
         }
